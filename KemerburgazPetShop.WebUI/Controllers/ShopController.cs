@@ -18,11 +18,20 @@ namespace KemerburgazPetShop.WebUI.Controllers
             return View();
         }
 
-        public IActionResult List()
+        public IActionResult List(string category, int page=1)
         {
+            const int pageSize = 12;
             return View(new IndexViewModels()
             {
-                Products= _productService.GetPopularProducts()
+                PageInfo = new PageInfo()
+                {
+                    TotalItems=_productService.GetCountByCategory(category),
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    CurrentCategory= category
+                },
+
+                Products= _productService.GetProductsByCategory(category, page, pageSize)
             });
         }
 

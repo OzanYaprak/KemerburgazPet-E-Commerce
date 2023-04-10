@@ -3,7 +3,6 @@ using KemerburgazPetShop.Business.Concrete;
 using KemerburgazPetShop.DataAccess.Abstract;
 using KemerburgazPetShop.DataAccess.Concrete.EfCore;
 using KemerburgazPetShop.DataAccess.Concrete.EFCore;
-using KemerburgazPetShop.DataAccess.Concrete.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,5 +36,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "products",
+    pattern: "products/{category?}",
+    defaults: new { controller = "Shop", action = "List" });
 
 app.Run();

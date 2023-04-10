@@ -8,5 +8,10 @@ namespace KemerburgazPetShop.WebUI.Controllers
         {
             return View();
         }
+
+        public IActionResult CreateProduct()
+        {
+            return View();
+        }
     }
 }

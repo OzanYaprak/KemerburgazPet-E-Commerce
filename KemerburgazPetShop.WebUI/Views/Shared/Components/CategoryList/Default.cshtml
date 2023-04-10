@@ -6,9 +6,7 @@
     {
         <li class="filter-item">
             <label class="filter-label">
-                <input type="checkbox" />
-                <span class="filter-checkbox rounded me-2"></span>
-                <span class="filter-text">@category.CategoryName</span>
+                <a asp-controller="Shop" asp-action="List" asp-route-category="@category.CategoryName.ToLower()" class="filter-text text-dark">@category.CategoryName</a>
             </label>
         </li>
     }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KemerburgazPetShop.DataAccess.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    [Migration("20230409233837_bir")]
+    [Migration("20230410211506_bir")]
     partial class bir
     {
         /// <inheritdoc />

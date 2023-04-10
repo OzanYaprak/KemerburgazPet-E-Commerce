@@ -38,6 +38,11 @@ namespace KemerburgazPetShop.Business.Concrete
             return _productRepository.GetByID(id);
         }
 
+        public int GetCountByCategory(string category)
+        {
+            return _productRepository.GetCountByCategory(category);
+        }
+
         public List<Product> GetPopularProducts()
         {
             return _productRepository.GetAll().ToList();
@@ -46,6 +51,11 @@ namespace KemerburgazPetShop.Business.Concrete
         public Product GetProductDetails(int id)
         {
             return _productRepository.GetProductDetails(id);
+        }
+
+        public List<Product> GetProductsByCategory(string category, int page,int pageSize)
+        {
+            return _productRepository.GetProductsByCategory(category,page, pageSize);
         }
 
         public void Update(Product entity)
