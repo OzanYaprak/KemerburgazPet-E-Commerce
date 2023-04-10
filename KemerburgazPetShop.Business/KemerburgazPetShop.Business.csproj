@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KemerburgazPetShop.DataAccess\KemerburgazPetShop.DataAccess.csproj" />
+    <ProjectReference Include="..\KemerburgazPetShop.Entities\KemerburgazPetShop.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

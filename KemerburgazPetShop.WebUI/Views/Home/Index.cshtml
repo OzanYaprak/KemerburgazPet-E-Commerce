@@ -1,0 +1,357 @@
+﻿@model IndexViewModels
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+<!-- slideshow start -->
+<div class="slideshow-section position-relative">
+    <div class="slideshow-active activate-slider" data-slick='{
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,
+                    "dots": true,
+                    "arrows": true,
+                    "responsive": [
+                        {
+                        "breakpoint": 768,
+                        "settings": {
+                            "arrows": false
+                        }
+                        }
+                    ]
+                }'>
+        <div class="slide-item slide-item-bag position-relative">
+            <img class="slide-img d-none d-md-block" src="~/Bisum/assets/img/slideshow/catanddog.jpg" alt="slide-1">
+            <img class="slide-img d-md-none" src="~/Bisum/assets/img/slideshow/catanddog.jpg" alt="slide-1">
+            <div class="content-absolute content-slide">
+                <div class="container height-inherit d-flex align-items-center justify-content-end">
+                    <div class="content-box slide-content slide-content-1 py-4">
+                        <h2 class="slide-heading heading_72 animate__animated animate__fadeInUp"
+                            data-animation="animate__animated animate__fadeInUp">
+                            Evcil Dostlarınız İçin
+                        </h2>
+                        <p class="slide-subheading heading_24 animate__animated animate__fadeInUp"
+                           data-animation="animate__animated animate__fadeInUp">
+                            Sağlıklı Mama Seçenekleri
+                        </p>
+                        <a class="btn-primary slide-btn animate__animated animate__fadeInUp"
+                           asp-controller="Shop" asp-action="List"
+                           data-animation="animate__animated animate__fadeInUp">
+                            İncele
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-item slide-item-bag position-relative">
+            <img class="slide-img d-none d-md-block" src="~/Bisum/assets/img/slideshow/pettoys.png" alt="slide-2">
+            <img class="slide-img d-md-none" src="~/Bisum/assets/img/slideshow/pettoys.png" alt="slide-2">
+            <div class="content-absolute content-slide">
+                <div class="container height-inherit d-flex align-items-center justify-content-end">
+                    <div class="content-box slide-content slide-content-1 py-4 text-center">
+                        <h2 class="slide-heading heading_72 animate__animated animate__fadeInUp"
+                            data-animation="animate__animated animate__fadeInUp">
+                            Birbirinden Farklı İlgi Çekici
+                        </h2>
+                        <p class="slide-subheading heading_24 animate__animated animate__fadeInUp"
+                           data-animation="animate__animated animate__fadeInUp">
+                            Aksesuar ve Oyuncaklar
+                        </p>
+                        <a class="btn-primary slide-btn animate__animated animate__fadeInUp"
+                           href="collection-left-sidebar.html"
+                           data-animation="animate__animated animate__fadeInUp">
+                           İncele
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-item slide-item-bag position-relative">
+            <img class="slide-img d-none d-md-block" src="~/Bisum/assets/img/slideshow/petcare.png" alt="slide-3">
+            <img class="slide-img d-md-none" src="~/Bisum/assets/img/slideshow/petcare.png" alt="slide-3">
+            <div class="content-absolute content-slide">
+                <div class="container height-inherit d-flex align-items-center justify-content-center">
+                    <div class="content-box slide-content slide-content-1 py-4 text-center">
+                        <h2 class="slide-heading heading_72 animate__animated animate__fadeInUp"
+                            data-animation="animate__animated animate__fadeInUp">
+                            Onlar İçin Özenle Seçtiğimiz
+                        </h2>
+                        <p class="slide-subheading heading_24 animate__animated animate__fadeInUp"
+                           data-animation="animate__animated animate__fadeInUp">
+                            Bakım Ürünleri ve Vitaminler
+                        </p>
+                        <a class="btn-primary slide-btn animate__animated animate__fadeInUp"
+                           href="collection-left-sidebar.html"
+                           data-animation="animate__animated animate__fadeInUp">
+                           İncele
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="activate-arrows"></div>
+    <div class="activate-dots dot-tools"></div>
+</div>
+<!-- slideshow end -->
+
+<!-- trusted badge start -->
+<div class="trusted-section mt-100 overflow-hidden">
+    <div class="trusted-section-inner">
+        <div class="container">
+            <div class="row justify-content-center trusted-row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="trusted-badge rounded p-0">
+                        <div class="trusted-icon">
+                            <img src="~/Bisum/assets/img/badge/box.png" style="width:85px;" />
+                            @*<i class="fa-solid fa-truck-fast fa-2xl" style="color: #00234d;"></i>*@
+                        </div>
+                        <div class="trusted-content">
+                            <h2 class="heading_18 trusted-heading">Ücretsiz Kargo</h2>
+                            <p class="text_16 trusted-subheading trusted-subheading-2">
+                                250 TL Üzeri Alışverişlerde Geçerli Ücretsiz Kargo İmkanı
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="trusted-badge rounded p-0">
+                        <div class="trusted-icon">
+                            <img src="~/Bisum/assets/img/badge/phone_call.png" style="width:55px;"/>
+                            @*<i class="fa-solid fa-headset fa-2xl" style="color: #00234d;"></i>*@
+                        </div>
+                        <div class="trusted-content">
+                            <h2 class="heading_18 trusted-heading">Destek Hattı 24/7</h2>
+                            <p class="text_16 trusted-subheading trusted-subheading-2">
+                                Danışmak İstediğiniz Konularda Biz Buradayız
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="trusted-badge rounded p-0">
+                        <div class="trusted-icon">
+                            <img src="~/Bisum/assets/img/badge/credit_card.png" style="width:85px;" />
+                            @*<i class="fa-solid fa-shield-dog fa-2xl" style="color: #00234d;"></i>*@
+                        </div>
+                        <div class="trusted-content">
+                            <h2 class="heading_18 trusted-heading">100% Ödeme Güvencesi</h2>
+                            <p class="text_16 trusted-subheading trusted-subheading-2">
+                                Güvenli Ödeme Seçeneği İle Rahatlıkla Sipariş Verebilirsiniz
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- trusted badge end -->
+
+<!-- banner start -->
+<div class="grid-banner mt-100 overflow-hidden">
+    <div class="collection-tab-inner mt-0">
+        <div class="container">
+            <div class="grid-container-2">
+                <a class="grid-item grid-item-1 position-relative rounded mt-0 d-flex" href="collection-left-sidebar.html"
+                   data-aos="fade-right" data-aos-duration="700">
+                    <img class="banner-img rounded" src="~/Bisum/assets/img/banner/healty.png" alt="banner-1">
+                    <div class="content-absolute content-slide">
+                        <div class="container height-inherit d-flex">
+                            <div class="content-box banner-content p-4">
+                                <h2 class="heading_34 primary-color">Medikal<br>Onaylı Ürünler</h2>
+                                <p class="text_14 mt-2 primary-color">Sağlık Kontrollerinden Geçmiş Ürünler</p>
+                                <span class="text_12 mt-4 link-underline d-block primary-color">
+                                    İncele
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="grid-item grid-item-2 position-relative rounded mt-0 d-flex" href="collection-left-sidebar.html"
+                   data-aos="fade-right" data-aos-duration="700">
+                    <img class="banner-img rounded" src="~/Bisum/assets/img/banner/cattoy.png" alt="banner-1">
+                    <div class="content-absolute content-slide">
+                        <div class="container height-inherit d-flex justify-content-end">
+                            <div class="content-box banner-content p-4 text-end">
+                                <h2 class="heading_34 primary-color">Eğlenceli <br>Oyuncaklar</h2>
+                                <p class="text_14 mt-2 primary-color">Evcil Dostlarınız İçin</p>
+                                <span class="text_12 mt-4 link-underline d-block primary-color">
+                                    İncele
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="grid-item grid-item-3 position-relative rounded mt-0 d-flex" href="collection-left-sidebar.html"
+                   data-aos="fade-left" data-aos-duration="700">
+                    <img class="banner-img rounded" src="~/Bisum/assets/img/banner/treatfood.png" alt="banner-1">
+                    <div class="content-absolute content-slide">
+                        <div class="container height-inherit d-flex">
+                            <div class="content-box banner-content p-4">
+                                <h2 class="heading_34 primary-color">Lezzetli<br>Ödül Mamaları</h2>
+                                <p class="text_14 mt-2 primary-color">Kedi ve Köpekleriniz İçin</p>
+                                <span class="text_12 mt-4 link-underline d-block primary-color">
+                                    İncele
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- banner end -->
+
+<!-- collection start -->
+<div class="featured-collection mt-100 overflow-hidden">
+    <div class="collection-tab-inner">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-heading primary-color">Çok Satanlar</h2>
+            </div>
+            <div class="row">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up" data-aos-duration="700">
+                        <div class="product-card">
+                            <div class="product-card-img">
+                                <a class="hover-switch" asp-controller="Shop" asp-action="Details" asp-route-id="@product.ProductID">
+                                    <img class="secondary-img" src="~/bisum/assets/img/products/hills/@product.ImageURL"
+                                         alt="product-img">
+                                    <img class="primary-img" src="~/bisum/assets/img/products/hills/@product.ImageURL"
+                                         alt="product-img">
+                                </a>
+
+                                @*<div class="product-badge">
+                            <span class="badge-label badge-percentage rounded">-44%</span>
+                            </div>*@
+
+
+                            </div>
+                            <div class="product-card-details">
+                                <h3 class="product-card-title">
+                                    <a asp-controller="Shop" asp-action="Details" asp-route-id="@product.ProductID">@product.ProductName</a>
+                                </h3>
+                                <div class="product-card-price">
+                                    <span class="card-price-regular"><i class="fa-solid fa-turkish-lira-sign"></i> @product.ProductPrice</span>
+                                    @*<span class="card-price-compare text-decoration-line-through">$1759</span>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="view-all text-center" data-aos="fade-up" data-aos-duration="700">
+                <a class="btn-primary" href="#">Daha Fazla</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- collection end -->
+
+<!-- shop by category start -->
+<div class="shop-category mt-100 overflow-hidden">
+    <div class="collection-tab-inner mt-0">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-heading primary-color">Kategoriler</h2>
+            </div>
+            <div class="shop-category-2 shop-category-inner">
+                <div class="scattered-item" data-aos="fade-left" data-aos-duration="700">
+                    <div class="scattered-wrapper">
+                        <div class="scattered-content">
+                            <img class="scattered-img" src="~/bisum/assets/img/banner/cat1.jpg" alt="img">
+                        </div>
+                        <div class="scattered-details">
+                            <h2 class="scattered-heading primary-color">Kedi Mamaları</h2>
+                            <a href="collection-left-sidebar.html"
+                               class="text_12 link-underline d-block primary-color mt-2">
+                                İNCELEYİN
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="scattered-item" data-aos="fade-right" data-aos-duration="700">
+                    <div class="scattered-wrapper">
+                        <div class="scattered-content">
+                            <img class="scattered-img" src="~/bisum/assets/img/banner/dog1.jpg" alt="img">
+                        </div>
+                        <div class="scattered-details">
+                            <h2 class="scattered-heading primary-color">Köpek Mamaları</h2>
+                            <a href="#2" class="text_12 link-underline d-block primary-color mt-2">
+                                İNCELEYİN
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="scattered-item" data-aos="fade-left" data-aos-duration="700">
+                    <div class="scattered-wrapper">
+                        <div class="scattered-content">
+                            <img class="scattered-img" src="~/bisum/assets/img/banner/bird1.jpg" alt="img">
+                        </div>
+                        <div class="scattered-details">
+                            <h2 class="scattered-heading primary-color">Kuş Mamaları</h2>
+                            <a href="#3" class="text_12 link-underline d-block primary-color mt-2">
+                                İNCELEYİN
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- shop by category end -->
+
+<!-- brand logo start -->
+<div class="brand-logo-section mt-100">
+    <div class="brand-logo-inner">
+        <div class="container">
+            <div class="brand-logo-container overflow-hidden">
+                <div class="scroll-horizontal row align-items-center flex-nowrap">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up"
+                         data-aos-duration="700">
+                        <a href="index.html" class="brand-logo d-flex align-items-center justify-content-center">
+                            <img src="~/bisum/assets/img/brand/logo1.png" alt="img">
+                        </a>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up"
+                         data-aos-duration="700">
+                        <a href="index.html" class="brand-logo d-flex align-items-center justify-content-center">
+                            <img src="~/bisum/assets/img/brand/logo2.png" alt="img">
+                        </a>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up"
+                         data-aos-duration="700">
+                        <a href="index.html" class="brand-logo d-flex align-items-center justify-content-center">
+                            <img src="~/bisum/assets/img/brand/logo3.png" alt="img">
+                        </a>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up"
+                         data-aos-duration="700">
+                        <a href="index.html" class="brand-logo d-flex align-items-center justify-content-center">
+                            <img src="~/bisum/assets/img/brand/logo4.png" alt="img">
+                        </a>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up"
+                         data-aos-duration="700">
+                        <a href="index.html" class="brand-logo d-flex align-items-center justify-content-center">
+                            <img src="~/bisum/assets/img/brand/logo5.png" alt="img">
+                        </a>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6" data-aos="fade-up"
+                         data-aos-duration="700">
+                        <a href="index.html" class="brand-logo d-flex align-items-center justify-content-center">
+                            <img src="~/bisum/assets/img/brand/logo6.png" alt="img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brand logo end -->

@@ -1,0 +1,15 @@
+﻿@model CategoryListViewModel
+
+
+<ul class="filter-lists list-unstyled mb-0">
+    @foreach (var category in Model.Categories)
+    {
+        <li class="filter-item">
+            <label class="filter-label">
+                <input type="checkbox" />
+                <span class="filter-checkbox rounded me-2"></span>
+                <span class="filter-text">@category.CategoryName</span>
+            </label>
+        </li>
+    }
+</ul>

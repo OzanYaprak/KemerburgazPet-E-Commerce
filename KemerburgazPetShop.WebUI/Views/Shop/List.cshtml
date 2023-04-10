@@ -1,0 +1,182 @@
+﻿@model IndexViewModels
+@{
+    ViewData["Title"] = "List";
+    Layout = "_Layout";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<main id="MainContent" class="content-for-layout">
+    <div class="collection mt-100">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <!-- product area start -->
+                <div class="col-lg-9 col-md-12 col-12">
+                    <div class="filter-sort-wrapper d-flex justify-content-between flex-wrap">
+                        <div class="collection-title-wrap d-flex align-items-end">
+                            <h2 class="collection-title heading_24 mb-0">Ürünler</h2>
+                        </div>
+                        <div class="filter-sorting">
+                            <div class="collection-sorting position-relative d-none d-lg-block">
+                                <div class="sorting-header text_16 d-flex align-items-center justify-content-end">
+                                    <span class="sorting-title me-2">Filtre:</span>
+                                    <span class="active-sorting">Yeniler</span>
+                                    <span class="sorting-icon">
+                                        <svg class="icon icon-down" xmlns="http://www.w3.org/2000/svg"
+                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                             stroke-linejoin="round" class="feather feather-chevron-down">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <ul class="sorting-lists list-unstyled m-0">
+                                    <li><a href="#" class="text_14">Çok Satanlar</a></li>
+                                    <li><a href="#" class="text_14">A-Z</a></li>
+                                    <li><a href="#" class="text_14">Z-A</a></li>
+                                    <li><a href="#" class="text_14">Artan Fiyat</a></li>
+                                    <li><a href="#" class="text_14">Azalan Fiyat</a></li>
+                                </ul>
+                            </div>
+                            <div class="filter-drawer-trigger mobile-filter d-flex align-items-center d-lg-none">
+                                <span class="mobile-filter-icon me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round" class="icon icon-filter">
+                                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                                    </svg>
+                                </span>
+                                <span class="mobile-filter-heading">Filtre</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collection-product-container">
+                        <div class="row">
+
+                            @foreach (var product in Model.Products)
+                            {
+                                <div class="col-lg-4 col-md-6 col-6" data-aos="fade-up" data-aos-duration="700">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                            <a class="hover-switch" asp-controller="Shop" asp-action="Details" asp-route-id="@product.ProductID">
+                                                <img class="secondary-img" src="~/bisum/assets/img/products/hills/@product.ImageURL"
+                                                     alt="product-img">
+                                                <img class="primary-img" src="~/bisum/assets/img/products/hills/@product.ImageURL"
+                                                     alt="product-img">
+                                            </a>
+
+                                            @*<div class="product-badge">
+                                        <span class="badge-label badge-percentage rounded">-44%</span>
+                                        </div>*@
+
+                                        </div>
+                                        <div class="product-card-details">
+                                            <h3 class="product-card-title">
+                                                <a asp-controller="Shop" asp-action="Details" asp-route-id="@product.ProductID">@product.ProductName</a>
+                                            </h3>
+                                            <div class="product-card-price">
+                                                <span class="card-price-regular"><i class="fa-solid fa-turkish-lira-sign"></i> @product.ProductPrice</span>
+                                                @*<span class="card-price-compare text-decoration-line-through">$1759</span>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    <div class="pagination justify-content-center mt-100">
+                        <nav>
+                            <ul class="pagination m-0 d-flex align-items-center">
+                                <li class="item disabled">
+                                    <a class="link">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="icon icon-left">
+                                            <polyline points="15 18 9 12 15 6"></polyline>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="item"><a class="link" href="#">1</a></li>
+                                <li class="item active"><a class="link" href="#">2</a></li>
+                                <li class="item"><a class="link" href="#">3</a></li>
+                                <li class="item"><a class="link" href="#">4</a></li>
+                                <li class="item">
+                                    <a class="link" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="icon icon-right">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- product area end -->
+                <!-- sidebar start -->
+                <div class="col-lg-3 col-md-12 col-12">
+                    <div class="collection-filter filter-drawer">
+                        <div class="filter-widget d-lg-none d-flex align-items-center justify-content-between">
+                                <button type="button" class="btn-close text-reset filter-drawer-trigger d-lg-none"></button>
+                        </div>
+
+                        <div class="filter-widget d-lg-none">
+                            <div class="filter-header faq-heading heading_18 d-flex align-items-center justify-content-between border-bottom"
+                                 data-bs-toggle="collapse" data-bs-target="#filter-mobile-sort">
+                                <span>
+                                    <span class="sorting-title me-2">Sıralama:</span>
+                                    <span class="active-sorting">Yeniler</span>
+                                </span>
+                                <span class="faq-heading-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                         viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round" class="icon icon-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div id="filter-mobile-sort" class="accordion-collapse collapse show">
+                                <ul class="sorting-lists-mobile list-unstyled m-0">
+                                    <li><a href="#" class="text_14">Çok Satanlar</a></li>
+                                    <li><a href="#" class="text_14">A-Z</a></li>
+                                    <li><a href="#" class="text_14">Z-A</a></li>
+                                    <li><a href="#" class="text_14">Artan Fiyat</a></li>
+                                    <li><a href="#" class="text_14">Azalan Fiyat</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="filter-widget">
+                            <div class="filter-header faq-heading heading_18 d-flex align-items-center justify-content-between border-bottom"
+                                 data-bs-toggle="collapse" data-bs-target="#filter-collection">
+                                Kategoriler
+                                <span class="faq-heading-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                         viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round" class="icon icon-down">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div id="filter-collection" class="accordion-collapse collapse show">
+                                @await Component.InvokeAsync("CategoryList")
+                            </div>
+                        </div>
+
+                        <div class="filter-widget">
+                            <a href="product.html">
+                                <img class="rounded" src="~/Bisum/assets/img/menu/2.jpeg" alt="img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- sidebar end -->
+            </div>
+        </div>
+    </div>
+</main>
