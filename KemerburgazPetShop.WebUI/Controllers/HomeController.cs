@@ -18,7 +18,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
         {
             return View(new IndexViewModels()
             {
-                Products = _productService.GetAll()
+                Products = _productService.GetPopularProducts()
             });
         }
 

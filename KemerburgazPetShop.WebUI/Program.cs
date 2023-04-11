@@ -42,4 +42,14 @@ app.MapControllerRoute(
     pattern: "products/{category?}",
     defaults: new { controller = "Shop", action = "List" });
 
+app.MapControllerRoute(
+    name: "adminProducts",
+    pattern: "admin/products",
+    defaults: new { controller = "Admin", action = "Index" });
+
+app.MapControllerRoute(
+    name: "adminProducts",
+    pattern: "admin/products/{id?}",
+    defaults: new { controller = "Admin", action = "Edit" });
+
 app.Run();

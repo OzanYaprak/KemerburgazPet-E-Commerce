@@ -118,7 +118,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-4">
                             <div class="header-logo">
-                                <a href="index.html" class="logo-main">
+                                <a asp-controller="Home" asp-action="Index" class="logo-main">
                                     <img src="~/Bisum/assets/img/logo_2.png" class="mt-2" loading="lazy" alt="PetShop" style="width:160px;">
                                 </a>
                             </div>
@@ -137,6 +137,13 @@
                                         <div class="mega-menu-header">
                                             <a class="nav-link" asp-controller="Admin" asp-action="CreateProduct">
                                                 Ürün Ekle
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="menu-list-item nav-item has-dropdown">
+                                        <div class="mega-menu-header">
+                                            <a class="nav-link" asp-controller="Admin" asp-action="ProductList">
+                                                Sistemdeki Ürünler
                                             </a>
                                         </div>
                                     </li>

@@ -30,7 +30,7 @@ namespace KemerburgazPetShop.Business.Concrete
 
         public List<Product> GetAll()
         {
-            return _productRepository.GetAll().Take(8).ToList();
+            return _productRepository.GetAll().ToList();
         }
 
         public Product GetByID(int id)
@@ -45,7 +45,7 @@ namespace KemerburgazPetShop.Business.Concrete
 
         public List<Product> GetPopularProducts()
         {
-            return _productRepository.GetAll().ToList();
+            return _productRepository.GetAll().Take(8).ToList();
         }
 
         public Product GetProductDetails(int id)

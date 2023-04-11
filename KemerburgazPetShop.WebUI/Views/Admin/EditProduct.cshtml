@@ -1,36 +1,37 @@
 ﻿@model ProductViewModel
 @{
-    ViewData["Title"] = "CreateProduct";
+    ViewData["Title"] = "EditProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3 class="m-4 text-center">Ürün Ekle</h3>
+<h3 class="m-4 text-center">Ürün Düzenle</h3>
 
 <div class="row justify-content-center align-items-center">
     <div class="col-md-6 col-sm-2">
-        <form asp-controller="Admin" asp-action="CreateProduct" method="post">
+        <form asp-controller="Admin" asp-action="EditProduct" method="post">
+            <input type="hidden" name="ProductID" value="@Model.ProductID" />
             <div class="form-group-row">
                 <label asp-for="ProductName" class="col-md-2 col-form-label"></label>
                 <div class="col-md-10">
-                    <input asp-for="ProductName" class="form-control" />
+                    <input asp-for="ProductName" value="@Model.ProductName" class="form-control" />
                 </div>
             </div>
             <div class="form-group-row">
                 <label asp-for="ImageURL" class="col-md-2 col-form-label"></label>
                 <div class="col-md-10">
-                    <input asp-for="ImageURL" class="form-control" />
+                    <input asp-for="ImageURL" value="@Model.ImageURL" class="form-control" />
                 </div>
             </div>
             <div class="form-group-row">
                 <label asp-for="ProductDescription" class="col-md-2 col-form-label"></label>
                 <div class="col-md-10">
-                    <textarea asp-for="ProductDescription" class="form-control" id="editor"></textarea>
+                    <textarea asp-for="ProductDescription" value="@Model.ProductDescription" class="form-control" id="editor"></textarea>
                 </div>
             </div>
             <div class="form-group-row">
                 <label asp-for="ProductPrice" class="col-md-2 col-form-label"></label>
                 <div class="col-md-10">
-                    <input asp-for="ProductPrice" class="form-control" />
+                    <input asp-for="ProductPrice" value="@Model.ProductPrice" class="form-control" />
                 </div>
             </div>
             <div class="form-group-row ">
@@ -41,3 +42,4 @@
         </form>
     </div>
 </div>
+
