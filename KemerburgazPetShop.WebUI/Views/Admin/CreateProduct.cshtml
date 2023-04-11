@@ -1,0 +1,44 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="ms-4 mt-3">Ürün Ekle</h3>
+
+
+<div class="row">
+    <div class="col-md-6 col-sm-2 ms-4">
+        <form asp-controller="Admin" asp-action="CreateProduct" method="post">
+            <div class="form-group-row">
+                <label asp-for="ProductName" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ProductName" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group-row">
+                <label asp-for="ImageURL" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ImageURL" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group-row">
+                <label asp-for="ProductDescription" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <textarea asp-for="ProductDescription" class="form-control" id="editor"></textarea>
+                </div>
+            </div>
+            <div class="form-group-row">
+                <label asp-for="ProductPrice" class="col-md-2 col-form-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ProductPrice" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group-row">
+                <div class="col-md-10 mt-3">
+                    <button class="btn btn-secondary active" type="submit" value="Save Product">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
