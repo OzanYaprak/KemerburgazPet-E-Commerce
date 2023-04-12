@@ -10,6 +10,8 @@ namespace KemerburgazPetShop.Business.Abstract
     public interface ICategoryService
     {
         List<Category> GetAll();
+        Category GetByID(int id);
+        Category GetByIDWithProducts(int id);
 
 
         void Create(Category entity);

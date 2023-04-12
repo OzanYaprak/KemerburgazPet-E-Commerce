@@ -1,0 +1,77 @@
+﻿@model CategoryViewModel
+@{
+    ViewData["Title"] = "EditCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="m-4 text-center">Kategori Düzenleme</h3>
+
+<div class="row justify-content-center align-items-start">
+    <div class="col-md-3 col-sm-2">
+        <form asp-controller="Admin" asp-action="EditCategory" method="post">
+            <input type="hidden" name="categoryID" value="@Model.CategoryID" />
+            <div class="form-group-row">
+                <label asp-for="CategoryName" class="col-md-2 col-form-label w-25">Kategori Adı</label>
+                <div class="col-md-10">
+                    <input asp-for="CategoryName" value="@Model.CategoryName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group-row text-center">
+                <div class="col-md-10 mt-3">
+                    <button class="btn btn-secondary active" type="submit" value="Save Product">Kaydet</button>
+                    <a asp-controller="Admin" asp-action="EditCategory" class="btn btn-secondary active ms-2">Sıfırla</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row justify-content-center align-items-start mt-5">
+    <h5 class="m-4 text-center">Bu Kategoride Kayıtlı Ürünler</h5>
+    <div class="col-md-6">
+        @if (Model.Products.Count() > 0)
+        {
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <td class="fw-bold bg-light text-center">ID</td>
+                        <td class="fw-bold bg-light text-center">Ürün Adı</td>
+                        <td class="fw-bold bg-light text-center">Satış Fiyatı</td>
+                        <td class="fw-bold bg-light text-center">Ürün Resmi</td>
+                        <td class="fw-bold bg-light text-center">İşlemler</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td class="text-center align-middle">@product.ProductID</td>
+                            <td class="text-center align-middle">@product.ProductName</td>
+                            <td class="text-center align-middle">@product.ProductPrice <i class="fa-solid fa-turkish-lira-sign"></i></td>
+                            <td class="text-center align-middle">
+                                <img src="~/Bisum/assets/img/products/hills/@product.ImageURL" width="80" />
+                            </td>
+                            <td class="text-center align-middle">
+
+                                <form asp-controller="Admin" asp-action="DeleteProduct" method="post" style="display:inline;">
+                                    <input type="hidden" name="productID" value="@product.ProductID" />
+                                    <button type="submit" class="btn btn-warning active" onclick="return confirmDelete();">Kategoriden Ayır</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning mt-5">
+                <h4>Ürün Bulunmuyor</h4>
+            </div>
+        }
+    </div>
+</div>

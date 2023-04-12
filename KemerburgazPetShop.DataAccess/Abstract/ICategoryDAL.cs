@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace KemerburgazPetShop.DataAccess.Abstract
 {
-    public interface ICategoryDAL:IGenericDAL<Category>
+    public interface ICategoryDAL : IGenericDAL<Category>
     {
+        Category GetByIDWithProducts(int id);
     }
 }

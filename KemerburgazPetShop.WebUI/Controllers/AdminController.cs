@@ -8,9 +8,11 @@ namespace KemerburgazPetShop.WebUI.Controllers
     public class AdminController : Controller
     {
         private IProductService _productService;
-        public AdminController(IProductService productService)
+        private ICategoryService _categoryService;
+        public AdminController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         public IActionResult ProductList()
@@ -40,7 +42,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
                 ProductPrice = model.ProductPrice
             };
             _productService.Create(entity);
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductList");
         }
 
         [HttpGet]
@@ -89,7 +91,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
 
             _productService.Update(entity);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductList");
         }
 
 
@@ -102,7 +104,87 @@ namespace KemerburgazPetShop.WebUI.Controllers
                 _productService.Delete(entity);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductList");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        public IActionResult CategoryList()
+        {
+            return View(new CategoryListViewModel()
+            {
+                Categories = _categoryService.GetAll()
+            });
+        }
+
+        [HttpGet]
+        public IActionResult EditCategory(int id)
+        {
+            var entity = _categoryService.GetByIDWithProducts(id);
+
+            return View(new CategoryViewModel()
+            {
+                CategoryName = entity.CategoryName,
+                CategoryID = entity.CategoryID,
+                Products = entity.ProductCategories.Select(a=>a.Product).ToList()
+            });
+        }
+
+        [HttpPost]
+        public IActionResult EditCategory(CategoryViewModel model)
+        {
+            var entity = _categoryService.GetByID(model.CategoryID);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            entity.CategoryName = model.CategoryName;
+            _categoryService.Update(entity);
+
+            return RedirectToAction("CategoryList");
+        }
+
+
+        [HttpGet]
+        public IActionResult CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateCategory(CategoryViewModel model)
+        {
+            var entity = new Category()
+            {
+                CategoryName = model.CategoryName,
+            };
+
+            _categoryService.Create(entity);
+
+            return RedirectToAction("CategoryList");
+        }
+
+
+        [HttpPost]
+        public IActionResult DeleteCategory(int categoryID)
+        {
+            var entity = _categoryService.GetByID(categoryID);
+            if (entity != null)
+            {
+                _categoryService.Delete(entity);
+            }
+
+            return RedirectToAction("CategoryList");
 
         }
     }

@@ -1,0 +1,54 @@
+﻿@model CategoryListViewModel
+@{
+    ViewData["Title"] = "CategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="m-4 text-center">Sistemdeki Kategoriler</h3>
+
+
+@if (Model.Categories.Count() > 0)
+{
+    <div class="d-flex justify-content-center my-3">
+        <a class="btn btn-primary" asp-controller="Admin" asp-action="CreateCategory">Yeni Kategori Ekle</a>
+    </div>
+
+    <table class="table table-responsive col-md-6 mx-auto">
+        <thead>
+            <tr>
+                <td class="fw-bold bg-light text-center">ID</td>
+                <td class="fw-bold bg-light text-center">Kategori Adı</td>
+                <td class="fw-bold bg-light text-center">İşlemler</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.Categories)
+            {
+                <tr>
+                    <td class="text-center align-middle">@category.CategoryID</td>
+                    <td class="text-center align-middle">@category.CategoryName</td>
+                    <td class="text-center align-middle">
+                        <a class="btn btn-secondary active me-2" asp-controller="Admin" asp-action="EditCategory" asp-route-id="@category.CategoryID">Düzenle</a>
+
+                        <form asp-controller="Admin" asp-action="DeleteCategory" method="post" style="display:inline;">
+                            <input type="hidden" name="categoryID" value="@category.CategoryID" />
+                            <button type="submit" class="btn btn-secondary active" onclick="return confirmDelete();">Sil</button>
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>No Products</h4>
+    </div>
+}
+
+

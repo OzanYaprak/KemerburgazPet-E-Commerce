@@ -20,12 +20,12 @@ namespace KemerburgazPetShop.Business.Concrete
 
         public void Create(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Create(entity);
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Delete(entity);
         }
 
         public List<Category> GetAll()
@@ -33,9 +33,19 @@ namespace KemerburgazPetShop.Business.Concrete
             return _categoryRepository.GetAll().ToList();
         }
 
+        public Category GetByID(int id)
+        {
+            return _categoryRepository.GetByID(id);
+        }
+
+        public Category GetByIDWithProducts(int id)
+        {
+            return _categoryRepository.GetByIDWithProducts(id);
+        }
+
         public void Update(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Update(entity);
         }
     }
 }

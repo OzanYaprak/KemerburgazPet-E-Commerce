@@ -62,6 +62,22 @@
             --section-subheading-font-weight: 400;
         }
     </style>
+
+    <script>
+        function confirmDelete() 
+        {
+            var result = confirm("Silmek istediğinize emin misiniz?");
+            if (result) 
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+    </script>
+
 </head>
 
 
@@ -128,22 +144,22 @@
                                 <ul class="main-menu list-unstyled justify-content-center">
                                     <li class="menu-list-item nav-item has-dropdown">
                                         <div class="mega-menu-header">
-                                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                            <a class="nav-link text-center" asp-controller="Home" asp-action="Index">
                                                 Ana Sayfa
                                             </a>
                                         </div>
                                     </li>
                                     <li class="menu-list-item nav-item has-dropdown">
                                         <div class="mega-menu-header">
-                                            <a class="nav-link" asp-controller="Admin" asp-action="CreateProduct">
-                                                Ürün Ekle
+                                            <a class="nav-link text-center" asp-controller="Admin" asp-action="ProductList">
+                                               Sistemde Kayıtlı Ürünler
                                             </a>
                                         </div>
                                     </li>
                                     <li class="menu-list-item nav-item has-dropdown">
                                         <div class="mega-menu-header">
-                                            <a class="nav-link" asp-controller="Admin" asp-action="ProductList">
-                                                Sistemdeki Ürünler
+                                            <a class="nav-link text-center" asp-controller="Admin" asp-action="CategoryList">
+                                                Sistemde Kayıtlı Kategoriler
                                             </a>
                                         </div>
                                     </li>
