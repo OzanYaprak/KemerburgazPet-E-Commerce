@@ -12,6 +12,17 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
 {
     public class EFCoreProductDAL : EFCoreGenericDAL<Product, PetShopContext>, IProductDAL
     {
+        public Product GetByIDWithCategories(int id)
+        {
+            using (var context = new PetShopContext())
+            {
+                return context.Products
+                    .Where(a => a.ProductID == id)
+                    .Include(a => a.ProductCategories)
+                    .ThenInclude(a => a.Category)
+                    .FirstOrDefault();
+            }
+        }
         public int GetCountByCategory(string category)
         {
             using (var context = new PetShopContext())
@@ -61,6 +72,33 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
                 }
 
                 return products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            }
+        }
+
+        public void Update(Product entity, int[] categoryIDs)
+        {
+            using (var context = new PetShopContext())
+            {
+                var product = context.Products
+                    .Include(a => a.ProductCategories)
+                    .FirstOrDefault(a=>a.ProductID == entity.ProductID);
+
+                if (product!=null)
+                {
+                    product.ProductName = entity.ProductName;
+                    product.ProductPrice = entity.ProductPrice;
+                    product.ProductDescription = entity.ProductDescription;
+                    product.ImageURL = entity.ImageURL;
+
+                    product.ProductCategories = categoryIDs.Select(a => new ProductCategory()
+                    {
+                        CategoryID = a,
+                        ProductID = entity.ProductID,
+                    }).ToList();
+
+                    context.SaveChanges();
+
+                }
             }
         }
     }

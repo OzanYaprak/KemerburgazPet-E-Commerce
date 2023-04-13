@@ -53,7 +53,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
                 return NotFound();
             }
 
-            var entity = _productService.GetByID((int)id);
+            var entity = _productService.GetByIDWithCategories((int)id);
 
             if (entity == null)
             {
@@ -66,16 +66,19 @@ namespace KemerburgazPetShop.WebUI.Controllers
                 ProductName = entity.ProductName,
                 ImageURL = entity.ImageURL,
                 ProductDescription = entity.ProductDescription,
-                ProductPrice = entity.ProductPrice
+                ProductPrice = entity.ProductPrice,
+                SelectedCategories = entity.ProductCategories.Select(c => c.Category).ToList()
 
             };
+
+            ViewBag.Categories = _categoryService.GetAll();
 
             return View(model);
         }
 
 
         [HttpPost]
-        public IActionResult EditProduct(ProductViewModel model)
+        public IActionResult EditProduct(ProductViewModel model, int[] categoryIDs)
         {
             var entity = _productService.GetByID(model.ProductID);
 
@@ -89,7 +92,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
             entity.ProductDescription = model.ProductDescription;
             entity.ProductPrice = model.ProductPrice;
 
-            _productService.Update(entity);
+            _productService.Update(entity, categoryIDs);
 
             return RedirectToAction("ProductList");
         }
@@ -186,6 +189,14 @@ namespace KemerburgazPetShop.WebUI.Controllers
 
             return RedirectToAction("CategoryList");
 
+        }
+
+        [HttpPost]
+        public IActionResult DeleteFromCategory(int categoryID, int productID)
+        {
+            _categoryService.DeleteFromCategory(categoryID, productID);
+
+            return Redirect("/admin/editcategory/"+ categoryID);
         }
     }
 }

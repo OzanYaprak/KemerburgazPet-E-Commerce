@@ -9,6 +9,8 @@ namespace KemerburgazPetShop.DataAccess.Abstract
 {
     public interface ICategoryDAL : IGenericDAL<Category>
     {
+        void DeleteFromCategory(int categoryID, int productID);
+
         Category GetByIDWithProducts(int id);
     }
 }

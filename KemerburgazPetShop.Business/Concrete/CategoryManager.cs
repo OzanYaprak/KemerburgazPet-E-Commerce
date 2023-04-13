@@ -28,6 +28,11 @@ namespace KemerburgazPetShop.Business.Concrete
             _categoryRepository.Delete(entity);
         }
 
+        public void DeleteFromCategory(int categoryID, int productID)
+        {
+            _categoryRepository.DeleteFromCategory(categoryID, productID);
+        }
+
         public List<Category> GetAll()
         {
             return _categoryRepository.GetAll().ToList();

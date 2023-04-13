@@ -38,6 +38,11 @@ namespace KemerburgazPetShop.Business.Concrete
             return _productRepository.GetByID(id);
         }
 
+        public Product GetByIDWithCategories(int id)
+        {
+            return _productRepository.GetByIDWithCategories(id);
+        }
+
         public int GetCountByCategory(string category)
         {
             return _productRepository.GetCountByCategory(category);
@@ -61,6 +66,12 @@ namespace KemerburgazPetShop.Business.Concrete
         public void Update(Product entity)
         {
             _productRepository.Update(entity);
+        }
+
+        public void Update(Product entity, int[] categoryIDs)
+        {
+            _productRepository.Update(entity,categoryIDs);
+
         }
     }
 }

@@ -10,6 +10,7 @@ namespace KemerburgazPetShop.Business.Abstract
     public interface IProductService
     {
         Product GetByID(int id);
+        Product GetByIDWithCategories(int id);
         List<Product> GetAll();
         List<Product> GetPopularProducts();
         List<Product> GetProductsByCategory(string category,int page,int pageSize);
@@ -18,5 +19,6 @@ namespace KemerburgazPetShop.Business.Abstract
         void Update(Product entity);
         void Delete(Product entity);
         int GetCountByCategory(string category);
+        void Update(Product entity, int[] categoryIDs);
     }
 }

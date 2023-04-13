@@ -14,5 +14,7 @@ namespace KemerburgazPetShop.DataAccess.Abstract
 
         Product GetProductDetails(int id);
         int GetCountByCategory(string category);
+        Product GetByIDWithCategories(int id);
+        void Update(Product entity, int[] categoryIDs);
     }
 }
