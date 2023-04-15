@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery-validate@1.19.5",
+      "destination": "wwwroot/jquery-validate/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "wwwroot/jquery-validation-unobtrusive/"
+    },
+    {
+      "library": "ckeditor5@37.0.1",
+      "destination": "wwwroot/ckeditor5/"
+    },
+    {
+      "library": "ckeditor@4.21.0",
+      "destination": "wwwroot/ckeditor/"
+    }
+  ]
+}

@@ -4,43 +4,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-<h3 class="m-4 text-center">Ürün Ekle</h3>
+@section Scripts {
 
-<div class="row justify-content-center align-items-center">
-    <div class="col-md-6 col-sm-2">
-        <form asp-controller="Admin" asp-action="CreateProduct" method="post">
-            <div class="form-group-row">
-                <label asp-for="ProductName" class="col-md-2 col-form-label">Ürün Adı</label>
-                <div class="col-md-10">
-                    <input asp-for="ProductName" class="form-control" />
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="container">
+    <h3 class="m-4 text-center">Ürün Ekle</h3>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 col-sm-2">
+            <form asp-controller="Admin" asp-action="CreateProduct" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group-row">
+                    <label asp-for="ProductName" class="col-md-2 col-form-label">Ürün Adı</label>
+                    <div class="col-md-10">
+                        <input asp-for="ProductName" value="@Model.ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group-row">
-                <label asp-for="ImageURL" class="col-md-2 col-form-label">Ürün Resmi</label>
-                <div class="col-md-10">
-                    <input asp-for="ImageURL" class="form-control" />
+                <div class="form-group-row">
+                    <label asp-for="ImageURL" class="col-md-2 col-form-label">Ürün Resmi</label>
+                    <div class="col-md-10">
+                        <input asp-for="ImageURL" value="@Model.ImageURL" class="form-control" />
+                        <span asp-validation-for="ImageURL" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group-row">
-                <label asp-for="ProductDescription" class="col-md-2 col-form-label">Ürün Açıklaması</label>
-                <div class="col-md-10">
-                    <textarea asp-for="ProductDescription" class="form-control" id="editor"></textarea>
+                <div class="form-group-row">
+                    <label asp-for="ProductDescription" class="col-md-4 col-form-label">Ürün Açıklaması</label>
+                    <div class="col-md-10">
+                        <textarea asp-for="ProductDescription" value="@Model.ProductDescription" class="form-control" id="editor"></textarea>
+                        <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group-row">
-                <label asp-for="ProductPrice" class="col-md-2 col-form-label">Satış Fiyatı</label>
-                <div class="col-md-10">
-                    <input asp-for="ProductPrice" class="form-control" />
+                <div class="form-group-row">
+                    <label asp-for="ProductPrice" class="col-md-2 col-form-label">Satış Fiyatı</label>
+                    <div class="col-md-10">
+                        <input asp-for="ProductPrice" value="@Model.ProductPrice" class="form-control" />
+                        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group-row ">
-                <div class="col-md-10 mt-3">
-                    <button class="btn btn-secondary active" type="submit" value="Save Product">Kaydet</button>
-                    <a asp-controller="Admin" asp-action="CreateProduct" class="btn btn-secondary active ms-2">Sıfırla</a>
+                <div class="form-group-row ">
+                    <div class="col-md-10 mt-3">
+                        <button class="btn btn-secondary active" type="submit" value="Save Product">Kaydet</button>
+                        <a asp-controller="Admin" asp-action="CreateProduct" class="btn btn-secondary active ms-2">Sıfırla</a>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 </div>

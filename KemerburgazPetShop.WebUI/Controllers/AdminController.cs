@@ -26,7 +26,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
         [HttpGet]
         public IActionResult CreateProduct()
         {
-            return View();
+            return View(new ProductViewModel());
         }
 
 
@@ -34,15 +34,21 @@ namespace KemerburgazPetShop.WebUI.Controllers
         [HttpPost]
         public IActionResult CreateProduct(ProductViewModel model)
         {
-            var entity = new Product()
+            if (ModelState.IsValid)
             {
-                ProductName = model.ProductName,
-                ImageURL = model.ImageURL,
-                ProductDescription = model.ProductDescription,
-                ProductPrice = model.ProductPrice
-            };
-            _productService.Create(entity);
-            return RedirectToAction("ProductList");
+                var entity = new Product()
+                {
+                    ProductName = model.ProductName,
+                    ImageURL = model.ImageURL,
+                    ProductDescription = model.ProductDescription,
+                    ProductPrice = model.ProductPrice
+                };
+                _productService.Create(entity);
+                return RedirectToAction("ProductList");
+            }
+
+            return View(model);
+
         }
 
         [HttpGet]
@@ -78,23 +84,46 @@ namespace KemerburgazPetShop.WebUI.Controllers
 
 
         [HttpPost]
-        public IActionResult EditProduct(ProductViewModel model, int[] categoryIDs)
+        public async Task<IActionResult> EditProduct(ProductViewModel model, int[] categoryIDs, IFormFile file)
         {
-            var entity = _productService.GetByID(model.ProductID);
-
-            if (entity == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+
+
+
+
+                var entity = _productService.GetByID(model.ProductID);
+
+                if (entity == null)
+                {
+                    return NotFound();
+                }
+
+                entity.ProductName = model.ProductName;
+                entity.ProductDescription = model.ProductDescription;
+                entity.ProductPrice = model.ProductPrice;
+
+                if (file != null)
+                {
+                    entity.ImageURL = file.FileName;
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Bisum\\assets\\img\\products\\hills",file.FileName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                       await file.CopyToAsync(stream);
+                    }
+                }
+
+                _productService.Update(entity, categoryIDs);
+
+                return RedirectToAction("ProductList");
             }
 
-            entity.ProductName = model.ProductName;
-            entity.ImageURL = model.ImageURL;
-            entity.ProductDescription = model.ProductDescription;
-            entity.ProductPrice = model.ProductPrice;
+            ViewBag.Categories = _categoryService.GetAll();
 
-            _productService.Update(entity, categoryIDs);
+            return View(model);
 
-            return RedirectToAction("ProductList");
         }
 
 
@@ -138,7 +167,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
             {
                 CategoryName = entity.CategoryName,
                 CategoryID = entity.CategoryID,
-                Products = entity.ProductCategories.Select(a=>a.Product).ToList()
+                Products = entity.ProductCategories.Select(a => a.Product).ToList()
             });
         }
 
@@ -196,7 +225,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
         {
             _categoryService.DeleteFromCategory(categoryID, productID);
 
-            return Redirect("/admin/editcategory/"+ categoryID);
+            return Redirect("/admin/editcategory/" + categoryID);
         }
     }
 }
