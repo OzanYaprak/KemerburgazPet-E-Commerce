@@ -10,6 +10,8 @@
     <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
 
+
+
 <div class="container">
     <h3 class="m-4 text-center">Ürün Ekle</h3>
 
@@ -32,7 +34,7 @@
                     </div>
                 </div>
                 <div class="form-group-row">
-                    <label asp-for="ProductDescription" class="col-md-4 col-form-label">Ürün Açıklaması</label>
+                    <label asp-for="ProductDescription" class="col-md-2 col-form-label">Ürün Açıklaması</label>
                     <div class="col-md-10">
                         <textarea asp-for="ProductDescription" value="@Model.ProductDescription" class="form-control" id="editor"></textarea>
                         <span asp-validation-for="ProductDescription" class="text-danger"></span>

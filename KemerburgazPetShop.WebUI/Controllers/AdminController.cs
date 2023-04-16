@@ -47,6 +47,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
                 return RedirectToAction("ProductList");
             }
 
+
             return View(model);
 
         }
@@ -84,46 +85,23 @@ namespace KemerburgazPetShop.WebUI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditProduct(ProductViewModel model, int[] categoryIDs, IFormFile file)
+        public IActionResult EditProduct(ProductViewModel model, int[] categoryIDs)
         {
-            if (ModelState.IsValid)
+            var entity = _productService.GetByID(model.ProductID);
+
+            if (entity == null)
             {
-
-
-
-
-                var entity = _productService.GetByID(model.ProductID);
-
-                if (entity == null)
-                {
-                    return NotFound();
-                }
-
-                entity.ProductName = model.ProductName;
-                entity.ProductDescription = model.ProductDescription;
-                entity.ProductPrice = model.ProductPrice;
-
-                if (file != null)
-                {
-                    entity.ImageURL = file.FileName;
-
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Bisum\\assets\\img\\products\\hills",file.FileName);
-
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                       await file.CopyToAsync(stream);
-                    }
-                }
-
-                _productService.Update(entity, categoryIDs);
-
-                return RedirectToAction("ProductList");
+                return NotFound();
             }
 
-            ViewBag.Categories = _categoryService.GetAll();
+            entity.ProductName = model.ProductName;
+            entity.ImageURL = model.ImageURL;
+            entity.ProductDescription = model.ProductDescription;
+            entity.ProductPrice = model.ProductPrice;
 
-            return View(model);
+            _productService.Update(entity, categoryIDs);
 
+            return RedirectToAction("ProductList");
         }
 
 

@@ -19,7 +19,7 @@ namespace KemerburgazPetShop.WebUI.ViewModels
         public string ImageURL { get; set; }
 
         [Required(ErrorMessage ="Ürün Fiyatı Girilmeli.")]
-        public decimal? ProductPrice { get; set; }
+        public double? ProductPrice { get; set; }
         public List<Category> SelectedCategories { get; set; }
     }
 }

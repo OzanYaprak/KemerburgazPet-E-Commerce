@@ -32,7 +32,7 @@ namespace KemerburgazPetShop.DataAccess.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
+                    ProductPrice = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {

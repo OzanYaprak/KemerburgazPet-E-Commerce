@@ -17,8 +17,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductCategory>()
-                .HasKey(a => new { a.ProductID, a.CategoryID });
+            modelBuilder.Entity<ProductCategory>().HasKey(a => new { a.ProductID, a.CategoryID });
         }
 
 

@@ -55,8 +55,8 @@ namespace KemerburgazPetShop.DataAccess.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double?>("ProductPrice")
+                        .HasColumnType("float");
 
                     b.HasKey("ProductID");
 

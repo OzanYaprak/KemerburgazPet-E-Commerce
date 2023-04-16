@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "EditProduct";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var counter = 0;
 }
 
 @section Scripts {
@@ -11,78 +10,59 @@
     <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
 
+<div class="container">
+    <h3 class="m-4 text-center">Ürün Düzenle</h3>
 
-<h3 class="m-4 text-center">Ürün Düzenle</h3>
-
-<form asp-controller="Admin" asp-action="EditProduct" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 col-sm-2">
-                <input type="hidden" name="ProductID" value="@Model.ProductID" />
-                <div class="form-group-row">
-                    <label asp-for="ProductName" class="col-md-2 col-form-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="ProductName" value="@Model.ProductName" class="form-control" />
+    <form asp-controller="Admin" asp-action="EditProduct" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6 col-sm-2">
+                    <input type="hidden" name="ProductID" value="@Model.ProductID" />
+                    <div class="form-group-row">
+                        <label asp-for="ProductName" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ProductName" value="@Model.ProductName" class="form-control" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label asp-for="ImageURL" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ImageURL" value="@Model.ImageURL" class="form-control" />
+                            <span asp-validation-for="ImageURL" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label asp-for="ProductDescription" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <textarea asp-for="ProductDescription" value="@Model.ProductDescription" class="form-control" rows="5" id="editor"></textarea>
+                            <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group-row">
+                        <label asp-for="ProductPrice" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ProductPrice" value="@Model.ProductPrice" class="form-control" />
+                            <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group-row ">
+                        <div class="col-md-10 mt-3">
+                            <button class="btn btn-secondary active" type="submit" value="Save Product">Kaydet</button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group-row">
-                    <label asp-for="ImageURL" class="col-md-2 col-form-label"></label>
-                    <div class="col-md-10">
-                        <input type="hidden" name="ImageURL" value="@Model.ImageURL" />
-                        <img src="~/Bisum/assets/img/products/hills/@Model.ImageURL" width="80px" />
-                        <input type="file" name="file" />
-
-
-                        @*<input asp-for="ImageURL" value="@Model.ImageURL" class="form-control" />*@
-                    </div>
-                </div>
-                <div class="form-group-row">
-                    <label asp-for="ProductDescription" class="col-md-2 col-form-label"></label>
-                    <div class="col-md-10">
-                        <textarea asp-for="ProductDescription" value="@Model.ProductDescription" class="form-control" rows="5" name="editor" id="editor"></textarea>
-                    </div>
-                </div>
-                <div class="form-group-row">
-                    <label asp-for="ProductPrice" class="col-md-2 col-form-label"></label>
-                    <div class="col-md-10">
-                        <input asp-for="ProductPrice" value="@Model.ProductPrice" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group-row ">
-                    <div class="col-md-10 mt-3">
-                        <button class="btn btn-secondary active" type="submit" value="Save Product">Kaydet</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                @foreach (var category in (List<Category>)ViewBag.Categories)
-                {
-                    var isChecked = "";
-
-                    if (Model.SelectedCategories.Any(a => a.CategoryID == category.CategoryID))
+                <div class="col-md-4">
+                    @foreach (var category in (List<Category>)ViewBag.Categories)
                     {
-                        isChecked = "checked";
-
-                        <input type="hidden" name="SelectedCategories[@counter].CategoryID" value="@category.CategoryID" />
-                        <input type="hidden" name="SelectedCategories[@counter].CategoryName" value="@category.CategoryName" />
-
-                        counter++;
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="categoryIDs" value="@category.CategoryID" id="category@(category.CategoryID)" @(Model.SelectedCategories.Any(a => a.CategoryID == category.CategoryID) ? "checked" : "")>
+                            <label class="form-check-label" for="category@(category.CategoryID)">@category.CategoryName</label>
+                        </div>
                     }
-                    else
-                    {
-                        isChecked = "";
-                    }
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="categoryIDs" value="@category.CategoryID" id="category@(category.CategoryID)" @isChecked>
-                        <label class="form-check-label" for="category@(category.CategoryID)">@category.CategoryName</label>
-                    </div>
-                }
+                </div>
             </div>
         </div>
-    </div>
-
-
-</form>
-
+    </form>
+</div>
