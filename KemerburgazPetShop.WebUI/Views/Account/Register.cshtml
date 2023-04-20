@@ -1,0 +1,62 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="login-page mt-100">
+    <div class="container">
+        <form asp-controller="Account" asp-action="Register" method="post" class="login-form common-form mx-auto">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="section-header mb-3">
+                <h2 class="section-heading text-center">Üye Ol</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="FullName" class="label">Adınız</label>
+                        <input asp-for="FullName" value="@Model.FullName" type="text" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="Username" class="label">Kullanıcı Adınız</label>
+                        <input asp-for="Username" value="@Model.Username" type="text" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="Email" class="label">E-Mail</label>
+                        <input asp-for="Email" value="@Model.Email" type="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="Password" class="label">Şifre</label>
+                        <input asp-for="Password" id="txtPass" value="@Model.Password" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="RePassword" class="label">Şifre Onay</label>
+                        <input asp-for="RePassword" value="@Model.RePassword" type="password" />
+                        <span asp-validation-for="RePassword" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn-primary d-block mt-3 btn-signin">Üye Ol</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>         

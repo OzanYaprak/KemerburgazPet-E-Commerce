@@ -1,0 +1,44 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="login-page mt-100">
+    <div class="container">
+        <form asp-controller="Account" asp-action="Login" method="post" class="login-form common-form mx-auto">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" name="ReturnURL" value="@Model.ReturnURL" />
+            <div class="section-header mb-3">
+                <h2 class="section-heading text-center">Giriş</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="Username" class="label">Kullanıcı Adınız</label>
+                        <input asp-for="Username" value="@Model.Username" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12">
+                    <fieldset>
+                        <label asp-for="Password" class="label">Şifre</label>
+                        <input asp-for="Password" id="txtPass" value="@Model.Password" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </fieldset>
+                </div>
+                <div class="col-12 mt-3">
+                    <a href="#" class="text_14 d-block">Şifrenizi Unuttunuz mu?</a>
+                    <button type="submit" class="btn-primary d-block mt-4 btn-signin">Giriş Yap</button>
+                    <a asp-controller="Account" asp-action="Register" class="btn-secondary mt-2 btn-signin">Hesabın yok mu ? Hemen Üye Ol.</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>     

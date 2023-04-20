@@ -1,10 +1,12 @@
 ﻿using KemerburgazPetShop.Business.Abstract;
 using KemerburgazPetShop.Entities;
 using KemerburgazPetShop.WebUI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KemerburgazPetShop.WebUI.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
         private IProductService _productService;
