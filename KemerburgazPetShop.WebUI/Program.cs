@@ -69,8 +69,12 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IProductDAL, EFCoreProductDAL>();
 builder.Services.AddScoped<ICategoryDAL, EFCoreCategoryDAL>();
+builder.Services.AddScoped<ICartDAL, EFCoreCartDAL>();
+
+
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<ICartService, CartManager>();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>(); //email confirmation  
 

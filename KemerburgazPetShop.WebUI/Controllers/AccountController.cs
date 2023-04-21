@@ -1,6 +1,8 @@
-﻿using KemerburgazPetShop.WebUI.Extensions;
+﻿using KemerburgazPetShop.Business.Abstract;
+using KemerburgazPetShop.WebUI.Extensions;
 using KemerburgazPetShop.WebUI.Identity;
 using KemerburgazPetShop.WebUI.ViewModels;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +14,13 @@ namespace KemerburgazPetShop.WebUI.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private ICartService _cartService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ICartService cartService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _cartService = cartService;
         }
 
         [HttpGet]
@@ -45,6 +49,9 @@ namespace KemerburgazPetShop.WebUI.Controllers
 
             if (result.Succeeded)
             {
+                // cart created start
+                _cartService.InitializeCart(user.Id);
+
                 return RedirectToAction("Login", "Account");
             }
 
