@@ -128,6 +128,11 @@ app.MapControllerRoute(
     pattern: "admin/products/{id?}",
     defaults: new { controller = "Admin", action = "EditProduct" });
 
+app.MapControllerRoute(
+    name: "cart",
+    pattern: "{controller=Cart}/{action=Index}",
+    defaults: new { controller = "Cart", action = "Index" });
+
 app.MapRazorPages();
 
 app.Run();

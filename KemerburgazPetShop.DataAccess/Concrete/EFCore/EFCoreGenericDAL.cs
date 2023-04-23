@@ -16,7 +16,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
 
 
     {
-        public void Create(TEntity entity)
+        public virtual void Create(TEntity entity)
         {
             using (var context = new TContext())
             {
@@ -25,7 +25,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
             }
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             using (var context = new TContext())
             {
@@ -34,7 +34,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
             }
         }
 
-        public IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public virtual IEnumerable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())
             {
@@ -44,7 +44,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
             }
         }
 
-        public TEntity GetByID(int id)
+        public virtual TEntity GetByID(int id)
         {
             using (var context = new TContext())
             {
@@ -52,7 +52,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
             }
         }
 
-        public TEntity GetOne(Expression<Func<TEntity, bool>> filter)
+        public virtual TEntity GetOne(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())
             {
@@ -60,7 +60,7 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
             }
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
             using (var context = new TContext())
             {

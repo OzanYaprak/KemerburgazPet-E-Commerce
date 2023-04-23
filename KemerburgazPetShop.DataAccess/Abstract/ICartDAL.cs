@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace KemerburgazPetShop.DataAccess.Abstract
 {
-    public interface ICartDAL:IGenericDAL<Cart>
+    public interface ICartDAL : IGenericDAL<Cart>
     {
+        void DeleteFromCart(int cartId, int productID);
+        Cart GetByUserID(string userID);
     }
 }
