@@ -70,11 +70,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IProductDAL, EFCoreProductDAL>();
 builder.Services.AddScoped<ICategoryDAL, EFCoreCategoryDAL>();
 builder.Services.AddScoped<ICartDAL, EFCoreCartDAL>();
+builder.Services.AddScoped<IOrderDAL, EFCoreOrderDAL>();
 
 
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICartService, CartManager>();
+builder.Services.AddScoped<IOrderService, OrderManager>();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>(); //email confirmation  
 
@@ -132,6 +134,11 @@ app.MapControllerRoute(
     name: "cart",
     pattern: "{controller=Cart}/{action=Index}",
     defaults: new { controller = "Cart", action = "Index" });
+
+app.MapControllerRoute(
+    name: "checkout",
+    pattern: "{controller=Cart}/{action=Checkout}",
+    defaults: new { controller = "Cart", action = "Checkout" });
 
 app.MapRazorPages();
 
