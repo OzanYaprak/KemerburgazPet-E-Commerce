@@ -13,5 +13,6 @@ namespace KemerburgazPetShop.Business.Abstract
         void AddToCart(string UserID, int productID, int quantity);
         Cart GetCartByUserID(string UserID);
         void DeleteFromCart(string UserID, int productID);
+        void ClearCart(string cartID);
     }
 }

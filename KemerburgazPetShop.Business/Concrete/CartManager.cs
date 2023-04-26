@@ -43,6 +43,11 @@ namespace KemerburgazPetShop.Business.Concrete
             }
         }
 
+        public void ClearCart(string cartID)
+        {
+            _cartRepository.ClearCart(cartID);
+        }
+
         public void DeleteFromCart(string UserID, int productID)
         {
             var cart = GetCartByUserID(UserID);

@@ -36,5 +36,14 @@ namespace KemerburgazPetShop.DataAccess.Concrete.EFCore
                 context.Database.ExecuteSqlRaw(cmd, cartId, productID);
             }
         }
+
+        public void ClearCart(string cartID)
+        {
+            using (var context = new PetShopContext())
+            {
+                var cmd = @"delete from CartItem where CartID=@p0";
+                context.Database.ExecuteSqlRaw(cmd, cartID);
+            }
+        }
     }
 }

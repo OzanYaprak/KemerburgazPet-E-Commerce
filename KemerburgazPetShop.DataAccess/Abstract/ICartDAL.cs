@@ -9,6 +9,7 @@ namespace KemerburgazPetShop.DataAccess.Abstract
 {
     public interface ICartDAL : IGenericDAL<Cart>
     {
+        void ClearCart(string cartID);
         void DeleteFromCart(int cartId, int productID);
         Cart GetByUserID(string userID);
     }

@@ -117,7 +117,7 @@ namespace KemerburgazPetShop.WebUI.Controllers
                 if (payment.Status == "success")
                 {
                     SaveOrder(model, payment, userID);
-                    //ClearCart(userID);
+                    ClearCart(cart.CartID.ToString());
                     return View("Success");
                 }
 
@@ -125,9 +125,9 @@ namespace KemerburgazPetShop.WebUI.Controllers
             return View(model);
         }
 
-        private void ClearCart(string userID)
+        private void ClearCart(string cartID)
         {
-            throw new NotImplementedException();
+            _cartService.ClearCart(cartID);
         }
 
         private void SaveOrder(OrderViewModel model, Payment payment, string userID)
