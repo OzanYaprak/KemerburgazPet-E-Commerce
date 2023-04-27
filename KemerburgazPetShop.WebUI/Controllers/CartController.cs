@@ -251,5 +251,40 @@ namespace KemerburgazPetShop.WebUI.Controllers
             return Payment.Create(request, options);
 
         }
+
+        public IActionResult GetOrders() 
+        {
+            var orders = _orderService.GetOrders(_userManager.GetUserId(User));
+            var orderListModel = new List<OrderListViewModel>();
+            OrderListViewModel orderModel;
+
+            foreach (var order in orders)
+            {
+                orderModel = new OrderListViewModel();
+                orderModel.OrderID = order.OrderID;
+                orderModel.OrderNumber = order.OrderNumber;
+                orderModel.OrderDate = order.OrderDate;
+                orderModel.OrderNote = order.OrderNote;
+                orderModel.Phone = order.Phone;
+                orderModel.FirstName = order.FirstName;
+                orderModel.LastName = order.LastName;
+                orderModel.Email = order.Email;
+                orderModel.Address = order.Address;
+                orderModel.City = order.City;
+
+                orderModel.OrderItems = order.OrderItems.Select(a => new OrderItemModel()
+                {
+                    OrderItemID = a.OrderItemID,
+                    OrderName = a.Product.ProductName,
+                    OrderPrice = a.ProductPrice,
+                    Quantity = a.Quantity,
+                    ImageURL = a.Product.ImageURL
+
+                }).ToList();
+
+                orderListModel.Add(orderModel);
+            }
+            return View(orderListModel); 
+        }
     }
 }

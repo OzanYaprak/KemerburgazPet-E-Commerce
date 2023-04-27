@@ -140,6 +140,11 @@ app.MapControllerRoute(
     pattern: "{controller=Cart}/{action=Checkout}",
     defaults: new { controller = "Cart", action = "Checkout" });
 
+app.MapControllerRoute(
+    name: "orders",
+    pattern: "{controller=Cart}/{action=GetOrders}",
+    defaults: new { controller = "Cart", action = "GetOrders" });
+
 app.MapRazorPages();
 
 app.Run();

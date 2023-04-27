@@ -21,5 +21,10 @@ namespace KemerburgazPetShop.Business.Concrete
         {
             _orderRepository.Create(entity);
         }
+
+        public List<Order> GetOrders(string userID)
+        {
+          return _orderRepository.GetOrders(userID);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace KemerburgazPetShop.DataAccess.Abstract
 {
     public interface IOrderDAL : IGenericDAL<Order>
     {
+        List<Order> GetOrders(string userID);
     }
 }

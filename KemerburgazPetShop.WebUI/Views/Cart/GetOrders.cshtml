@@ -1,0 +1,68 @@
+﻿@model List<OrderListViewModel>
+
+@{
+    ViewData["Title"] = "GetOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center my-5 fw-light">Siparişlerim</h1>
+
+@foreach (var order in Model)
+{
+    <div class="container">
+        <table class="table table-bordered  mb-3">
+            <thead>
+                <tr class="bg-1 text-white">
+                    <th colspan="4" class="fw-light">Sipariş ID: #@order.OrderID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var orderItem in order.OrderItems)
+                {
+                    <tr>
+                        <th class="fw-bold">Ürün Adı:</th>
+                        <td class="fw-light" style="height: 40px;">@orderItem.OrderName</td>
+                    </tr>
+                    <tr>
+                        <th>Ürün Fiyatı:</th>
+                        <td class="fw-light" style="height: 40px;">@orderItem.OrderPrice.ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <th>Ürün Adeti:</th>
+                        <td class="fw-light" style="height: 40px;">@orderItem.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Müşteri Adı:</th>
+                    <td class="fw-light" style="height: 40px;">@order.FirstName @order.LastName</td>
+                </tr>
+                <tr>
+                    <th>Adres:</th>
+                    <td class="fw-light" style="height: 40px;">@order.Address</td>
+                </tr>
+                <tr>
+                    <th>Telefon:</th>
+                    <td class="fw-light" style="height: 40px;">@order.Phone</td>
+                </tr>
+                <tr>
+                    <th>Eposta:</th>
+                    <td class="fw-light" style="height: 40px;">@order.Email</td>
+                </tr>
+                <tr>
+                    <th>Ödeme Durumu:</th>
+                    <td class="fw-light" style="height: 40px;">@order.PaymentTypes</td>
+                </tr>
+                <tr>
+                    <th>Sipariş Durumu:</th>
+                    <td class="fw-light" style="height: 40px;">@order.OrderState</td>
+                </tr>
+                <tr>
+                    <th class="">Toplam:</th>
+                    <td class="fw-light" style="height: 40px;">@order.TotalPrice().ToString("c")</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}
