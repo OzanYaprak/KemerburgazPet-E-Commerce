@@ -56,6 +56,10 @@ namespace KemerburgazPetShop.WebUI.Controllers
             });
         }
 
+        public IActionResult DiscountedProducts()
+        {
+            return View();
+        }
 
 
     }

@@ -135,11 +135,11 @@ namespace KemerburgazPetShop.WebUI.Controllers
             var order = new Order();
 
             order.OrderNumber = new Random().Next(111111, 999999).ToString();
-            order.OrderState = EnumOrderState.Completed;
-            order.PaymentTypes = EnumPaymentTypes.CreditCart;
+            order.OrderState = EnumOrderState.Tamamlandı;
+            order.PaymentTypes = EnumPaymentTypes.KrediKartı;
             order.PaymentID = payment.PaymentId;
             order.ConversationID = payment.ConversationId;
-            order.OrderDate = new DateTime();
+            order.OrderDate = DateTime.Now;
             order.FirstName = model.FirstName;
             order.LastName = model.LastName;
             order.Email = model.Email;

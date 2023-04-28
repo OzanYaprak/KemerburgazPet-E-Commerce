@@ -42,14 +42,14 @@ namespace KemerburgazPetShop.Entities
 
     public enum EnumOrderState
     {
-        waiting = 0,
-        Unpaid = 1,
-        Completed = 2
+        İşlemde = 0,
+        ÖdemeBekleniyor = 1,
+        Tamamlandı = 2
     }
 
     public enum EnumPaymentTypes
     {
-        CreditCart = 0,
+        KrediKartı = 0,
         Eft = 1
     }
 }
